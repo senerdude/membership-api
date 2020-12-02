@@ -1,21 +1,32 @@
-# Matchub API
+# Membership API
 
-Node/Typescript, MongoDB stack simple membership API.
+Free Node/Typescript, MongoDB stack simple membership API with SMTP features.
 
-### Installation
+## Installation
 
 ```sh
 $ npm install
 ```
 
-> **Note:** Edit **.env** file in the project root to setup MongoDB connection string and token encryption string.
+## Configuration
 
-### Development
+1 - Save **congif.ts.example** as **congif.ts** in the project root and edit required non-secure variables.
+2 - Create an **.env** file in the project root and past veriables below.
+
+```sh
+TOKEN_SECRET = your256-bit-key-jJkQ55JGvN7zwB
+MONGO_USER = yourDBClient
+MONGO_PASSWORD = yourDBPassw0rd
+SMTP_USER = noreply@yourdomain.com
+SMTP_PASS = smtpPassw0rd
+```
+
+## Development
 
 ```sh
 $ npm start
 ```
-### Endpoints
+## Endpoints
 
 Matchub currently has the following endpoints.
 
@@ -25,7 +36,6 @@ Matchub currently has the following endpoints.
 | Login    | `POST`   | /api/user/login    |
 | User     | `GET`    | /api/user          |
 
+## License
 
-##
-
-Copyright 2020 by Lifetoweb LTD. All Rights Reserved.
+[MIT](https://https://github.com/senerdude/membership-api/blob/main/LICENSE)
