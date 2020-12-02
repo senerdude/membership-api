@@ -1,8 +1,11 @@
 import { Router } from 'express'
 import bcrypt from 'bcrypt'
 import User from '../models/User'
+import jwt from 'jsonwebtoken'
+import { nanoid } from 'nanoid'
 import signUpValidation from '../validation/signUpValidation'
 import smtpActivation from '../modules/smtpActivation'
+import config from '../config'
 
 // POST : Sign Up
 const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
@@ -23,6 +26,7 @@ const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
     const user = new User({
         name: req.body.name,
         'email.address': req.body.email,
+        'email.code': nanoid(10),
         password: hashedPassword
     });
 
@@ -31,12 +35,15 @@ const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
     // Try create user
     try {
         savedUser = await user.save()
-        res.send(savedUser._id)
+
+        // Return Token
+        const token = jwt.sign({ _id: savedUser._id }, config.jwt.secret)
+        res.header('auth-token', token).send(token)
     } catch (error) {
         res.status(400).send(error)
     }
 
-    if(savedUser){
+    if(config.smtp.enabled && savedUser){
         // Try to send activation link
         try {
             const activationMail = await smtpActivation(req.body.email, savedUser.emailVerificationCode)

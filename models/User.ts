@@ -5,7 +5,8 @@ import { nanoid } from 'nanoid'
 const emailSchema = new mongoose.Schema({
   address: { type: String, required: true, min: 6, max: 255 },
   verified: { type:String, required:true, default:false },
-  code : { type: String, required: true, default: () => nanoid(10) }
+  code : { type: String, required: true, min:10, max:255 },
+  expire: { type: Date, default: new Date().setDate(new Date().getDate()+1), }
 })
 
 // User Schema

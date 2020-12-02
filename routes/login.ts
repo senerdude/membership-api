@@ -23,7 +23,7 @@ const loginRouter = Router().post('/login', async (req:any,res:any) => {
     if(!validPass) return res.status(400).send(invalidText)
 
     // Check email verification
-    if(user.email.verified !== 'true') return res.status(400).send(verificationText)
+    if(config.smtp.enabled && user.email.verified !== "true") return res.status(400).send(verificationText)
 
     const token = jwt.sign({ _id: user._id }, config.jwt.secret)
     res.header('auth-token', token).send(token)
