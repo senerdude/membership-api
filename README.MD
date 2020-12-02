@@ -10,7 +10,7 @@ $ npm install
 
 ## Configuration
 
-- Save **congif.ts.example** file as **congif.ts** in the project root and edit required non-secure variables.
+- Edit **config.ts** file to setup required non-secure variables.
 - Save **.env.example** file as **.env** in the project root and edit required secure veriables.
 
 ## Development
