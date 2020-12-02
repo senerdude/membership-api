@@ -10,16 +10,8 @@ $ npm install
 
 ## Configuration
 
-- Save **congif.ts.example** as **congif.ts** in the project root and edit required non-secure variables.
-- Create an **.env** file in the project root and past veriables below.
-
-```sh
-TOKEN_SECRET = your256-bit-key-jJkQ55JGvN7zwB
-MONGO_USER = yourDBClient
-MONGO_PASSWORD = yourDBPassw0rd
-SMTP_USER = noreply@yourdomain.com
-SMTP_PASS = smtpPassw0rd
-```
+- Save **congif.ts.example** file as **congif.ts** in the project root and edit required non-secure variables.
+- Save **.env.example** file as **.env** in the project root and edit required secure veriables.
 
 ## Development
 
