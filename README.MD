@@ -10,8 +10,8 @@ $ npm install
 
 ## Configuration
 
-1 - Save **congif.ts.example** as **congif.ts** in the project root and edit required non-secure variables.
-2 - Create an **.env** file in the project root and past veriables below.
+- Save **congif.ts.example** as **congif.ts** in the project root and edit required non-secure variables.
+- Create an **.env** file in the project root and past veriables below.
 
 ```sh
 TOKEN_SECRET = your256-bit-key-jJkQ55JGvN7zwB
