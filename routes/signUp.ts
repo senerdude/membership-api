@@ -30,28 +30,21 @@ const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
         password: hashedPassword
     });
 
-    let savedUser:any = {};
-
-    // Try create user
-    try {
-        savedUser = await user.save()
-
+    user.save().then((savedUser:any) => {
         // Return Token
         const token = jwt.sign({ _id: savedUser._id }, config.jwt.secret)
         res.header('auth-token', token).send(token)
-    } catch (error) {
-        res.status(400).send(error)
-    }
 
-    if(config.smtp.enabled && savedUser){
-        // Try to send activation link
-        try {
-            const activationMail = await smtpActivation(req.body.email, savedUser.emailVerificationCode)
-            console.log(activationMail)
-        } catch (error) {
-            console.log(error)
+        // Send Activation Code
+        if(config.smtp.enabled){
+            // Try to send activation link
+            smtpActivation(req.body.email, savedUser.email.code).catch(error => {
+                console.log(error)
+            })
         }
-    }
+    }).catch(error => {
+        res.status(400).send(error)
+    })
 })
 
 export default signUpRouter
