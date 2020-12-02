@@ -9,7 +9,7 @@
 
 # secured files
 .env
-.config.ts
+config.ts
 
 # misc
 .DS_Store
