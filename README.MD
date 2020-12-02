@@ -22,11 +22,12 @@ $ npm start
 
 Matchub currently has the following endpoints.
 
-| Name     | Method   | Path               |
-|----------|----------|--------------------|
-| Sign Up  | `POST`   | /api/user/signup   |
-| Login    | `POST`   | /api/user/login    |
-| User     | `GET`    | /api/user          |
+| Name               | Method   | Path                   |
+|--------------------|----------|------------------------|
+| Sign Up            | `POST`   | /api/user/signup       |
+| Login              | `POST`   | /api/user/login        |
+| User               | `GET`    | /api/user              |
+| Email Verification | `POST`   | /api/user/verify/email |
 
 ## License
 
