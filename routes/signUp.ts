@@ -4,7 +4,7 @@ import User from '../models/User'
 import jwt from 'jsonwebtoken'
 import { nanoid } from 'nanoid'
 import signUpValidation from '../validation/signUpValidation'
-import smtpActivation from '../modules/smtpActivation'
+import emailVerification from '../modules/emailVerification'
 import config from '../config'
 
 // POST : Sign Up
@@ -38,7 +38,7 @@ const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
         // Send Activation Code
         if(config.smtp.enabled){
             // Try to send activation link
-            smtpActivation(req.body.email, savedUser.email.code).catch(error => {
+            emailVerification(req.body.email, savedUser.email.code).catch(error => {
                 console.log(error)
             })
         }

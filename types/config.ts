@@ -36,7 +36,7 @@ interface IConfig {
             }
         }
         templates : {
-            activation(userEmail:string, activationCode:string) : INodeMailerTemplate
+            verifyEmail(userEmail:string, verificationCode:string) : INodeMailerTemplate
         }
     }
 }

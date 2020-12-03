@@ -50,13 +50,13 @@ config.nodemailer = {
         }
     },
     templates : {
-        activation : (userEmail:string, activationCode:string) => {
+        verifyEmail : (userEmail:string, verificationCode:string) => {
             return <INodeMailerTemplate>{
-                from: '"Your Service Name" noreply@yourdomain.com', // From Address
+                from: '"Your Company" noreply@yourcompany.com', // From Address
                 to: userEmail,
-                subject: "Your Service Name Activation", // Subject
-                text: `Your activation link : ${config.app.baseURL}/verify/${activationCode}`, // Text
-                html: `<p>Your activation code : <a href="${config.app.baseURL}/verify/${activationCode}">${activationCode}</a></p>` // HTML
+                subject: "Your Company Email Verification", // Subject
+                text: `Your verification link : ${config.app.baseURL}/verify/email?${userEmail}&code=${verificationCode}`, // Text
+                html: `<p>Please click <a href="${config.app.baseURL}/verify/email?${userEmail}&code=${verificationCode}">here</a> to verify your email.</p>` // HTML
             }
         }
     }
