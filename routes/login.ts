@@ -25,6 +25,9 @@ const loginRouter = Router().post('/login', async (req:any,res:any) => {
     // Check email verification
     if(config.smtp.enabled && user.email.verified !== "true") return res.status(400).send(verificationText)
 
+    // Update last login
+    await User.updateOne({'email.address':req.body.email },{lastLogin:Date.now()})
+
     const token = jwt.sign({ _id: user._id }, config.jwt.secret)
     res.header('auth-token', token).send(token)
 })
