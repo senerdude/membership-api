@@ -1,14 +1,15 @@
 import Joi from '@hapi/joi'
+import i18n from '../i18n'
 
 // Login Validation
-const loginValidation = (data:any) => {
+const loginValidation = (req:any) => {
 
     const userSchema = Joi.object({
-        email: Joi.string().min(6).required().email(),
+        email: Joi.string().required().email(),
         password: Joi.string().min(6).required()
     })
 
-    return userSchema.validate(data)
+    return userSchema.validate(req.body)
 }
 
 export default loginValidation

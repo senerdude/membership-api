@@ -6,10 +6,10 @@ import config from '../config'
 const verifyEmailRouter = Router().post('/verify/email', async (req:any,res:any) => {
 
     // Check SMTP Service Status
-    if(!config.smtp.enabled) return res.status(403).send(`SMTP service is disabled.`)
+    if(!config.smtp.enabled) return res.status(403).send(res.__('smtp.disabled'))
 
     // Validate Data
-    const { error } = verifyEmailValidation(req.body)
+    const { error } = verifyEmailValidation(req)
     if(error) return res.status(401).send(error.details[0].message)
 
     // Check email
@@ -20,10 +20,10 @@ const verifyEmailRouter = Router().post('/verify/email', async (req:any,res:any)
         const expireDate:Date = new Date(user.email.expire)
         const currentDate:Date = new Date()
         console.log(expireDate, currentDate)
-        if(currentDate > expireDate) res.status(401).send("This link expired")
+        if(currentDate > expireDate) res.status(401).send(res.__('verification.linkExpired'))
 
         // Check status
-        if(user.email.verified === "true") res.status(401).send("This account already verified.")
+        if(user.email.verified === "true") res.status(401).send(res.__('verification.alreadyVerified'))
 
         // Verify Account
         await User.updateOne({'email.address':req.body.email },{'email.verified':true })
@@ -32,7 +32,7 @@ const verifyEmailRouter = Router().post('/verify/email', async (req:any,res:any)
         res.status(200).send("OK")
 
     } else {
-        return res.status(401).send(`Email or activation code is wrong.`)
+        return res.status(401).send(res.__('verification.wrongCode'))
     }
 })
 

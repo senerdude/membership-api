@@ -1,0 +1,16 @@
+{
+	"login": {
+		"wrongPassword": "Eposta veya sifre hatali.",
+		"verifyEmail": "Lutfen giris yapmadan once eposta adresinizi oynaylayiniz.",
+		"emailExist": "%s eposta adresi zaten kayitli",
+		"userNotFound" : "Kullanici bulunamadi"
+	},
+	"verification" : {
+		"linkExpired" : "Bu link artik gecerli degil",
+		"alreadyVerified" : "Bu hesap daha once dogrulandi.",
+		"wrongCode" : "Eposta veya aktivasyon kodu hatali"
+	},
+	"smtp" : {
+		"disabled": "SMTP devre disi."
+	}
+}

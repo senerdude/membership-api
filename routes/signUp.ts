@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import User from '../models/User'
 import jwt from 'jsonwebtoken'
 import { nanoid } from 'nanoid'
+
 import signUpValidation from '../validation/signUpValidation'
 import emailVerification from '../modules/emailVerification'
 import config from '../config'
@@ -11,12 +12,12 @@ import config from '../config'
 const signUpRouter = Router().post('/signup', async (req:any,res:any) => {
 
     // Validate Data
-    const { error } = signUpValidation(req.body)
+    const { error } = signUpValidation(req)
     if(error) return res.status(400).send(error.details[0].message)
 
     // Check email
     const emailExist = await User.findOne({'email.address':req.body.email})
-    if(emailExist) return res.status(400).send(`${req.body.email} already exist.`)
+    if(emailExist) return res.status(400).send(res.__('login.emailExist', req.body.email))
 
     // Hash Password
     const salt = await bcrypt.genSalt(10);

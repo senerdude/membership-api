@@ -11,13 +11,22 @@ $ npm install
 ## Configuration
 
 - Edit **config.ts** file to setup required non-secure variables.
-- Save **.env.example** file as **.env** in the project root and edit required secure veriables.
+- Save **.env.example** file as **.env** in the project root and edit required secure variables.
 
 ## Development
 
 ```sh
 $ npm start
 ```
+
+## Multi-Language Support with i18n
+
+i18n wires up a plain http server and return "Hello" or "Hallo" depending on browsers 'Accept-Language'.
+
+- Edit options **config > i18n** in **config.ts** file.
+- Add/remove language files under **translations** folder.
+
+
 ## Endpoints
 
 Matchub currently has the following endpoints.

@@ -1,0 +1,16 @@
+{
+	"login": {
+		"wrongPassword": "Email or password is wrong.",
+		"verifyEmail": "Please verify your email address before login",
+		"emailExist": "%s already exist.",
+		"userNotFound" : "Can't find user."
+	},
+	"verification" : {
+		"linkExpired" : "This link expired.",
+		"alreadyVerified" : "This account already verified.",
+		"wrongCode" : "Email or activation code is wrong."
+	},
+	"smtp" : {
+		"disabled": "SMTP service is disabled."
+	}
+}

@@ -25,6 +25,13 @@ interface IConfig {
         username : string
         password : string
     }
+    i18n : {
+        locales: string[],
+        defaultLocale: string,
+        cookie: string,
+        objectNotation : boolean,
+        directory: string
+    }
     nodemailer : {
         transporter : {
             host : string

@@ -1,14 +1,14 @@
 import Joi from '@hapi/joi'
 
 // Verify Email Validation
-const verifyEmailValidation = (data:any) => {
+const verifyEmailValidation = (req:any) => {
 
     const verifyEmailSchema = Joi.object({
-        email: Joi.string().min(6).required().email(),
+        email: Joi.string().required().email(),
         code: Joi.string().min(10).required()
     })
 
-    return verifyEmailSchema.validate(data)
+    return verifyEmailSchema.validate(req.body)
 }
 
 export default verifyEmailValidation

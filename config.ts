@@ -38,6 +38,15 @@ config.smtp = {
     password : process.env.SMTP_PASS || 'password'
 }
 
+// Language
+config.i18n = {
+    locales: ['en', 'tr'],
+    defaultLocale: 'en',
+    cookie: 'yourcookiename',
+    objectNotation: true,
+    directory: __dirname + '/translations'
+}
+
 // Nodemailer
 config.nodemailer = {
     transporter : {
