@@ -21,7 +21,7 @@ $ npm start
 
 ## Multi-Language Support with i18n
 
-i18n wires up a plain http server and return "Hello" or "Hallo" depending on browsers 'Accept-Language'.
+i18n wires up api server and return "Hello" or "Hallo" depending on browsers 'Accept-Language'.
 
 - Edit options **config > i18n** in **config.ts** file.
 - Add/remove language files under **translations** folder.
@@ -31,12 +31,13 @@ i18n wires up a plain http server and return "Hello" or "Hallo" depending on bro
 
 Matchub currently has the following endpoints.
 
-| Name               | Method   | Path                   |
-|--------------------|----------|------------------------|
-| Sign Up            | `POST`   | /api/user/signup       |
-| Login              | `POST`   | /api/user/login        |
-| User               | `GET`    | /api/user              |
-| Email Verification | `POST`   | /api/user/verify/email |
+| Name               | Method   | Path                    |
+|--------------------|----------|-------------------------|
+| Sign Up            | `POST`   | /api/user/signup        |
+| Login              | `POST`   | /api/user/login         |
+| User               | `GET`    | /api/user               |
+| Email Verification | `POST`   | /api/user/verify/email  |
+| Forgot Password    | `POST`   | Development in progress |
 
 ## License
 
